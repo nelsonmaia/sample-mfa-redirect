@@ -35,7 +35,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={Home} />
             <PrivateRoute path="/profile" component={Profile} />
-            <PrivateRoute path="/mfa" component={AskMFA} />
+            <Route path="/mfa" component={AskMFA} />
           </Switch>
         </Container>
         <Footer />
