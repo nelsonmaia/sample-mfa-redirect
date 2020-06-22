@@ -11,12 +11,10 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
       return;
     }
     const fn = async () => {
-      await loginWithRedirect({
-        appState: { targetUrl: path }
-      });
+      await auth0.getTokenSilently();
     };
     fn();
-  }, [loading, isAuthenticated, loginWithRedirect, path]);
+  }, [loading, isAuthenticated, loginWithRedirect, getTokenSilently, path]);
 
   const render = props =>
     isAuthenticated === true ? <Component {...props} /> : null;
