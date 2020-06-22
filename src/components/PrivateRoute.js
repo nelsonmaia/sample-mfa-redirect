@@ -4,7 +4,7 @@ import { Route, withRouter } from "react-router-dom";
 import { useAuth0 } from "../react-auth0-spa";
 
 const PrivateRoute = ({ component: Component, path, ...rest }) => {
-  const { loading, isAuthenticated, loginWithRedirect } = useAuth0();
+  const { loading, isAuthenticated, loginWithRedirect, getTokenSilently } = useAuth0();
 
   useEffect(() => {
     if (loading || isAuthenticated) {
