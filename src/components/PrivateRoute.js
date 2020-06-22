@@ -4,17 +4,19 @@ import { Route, withRouter } from "react-router-dom";
 import { useAuth0 } from "../react-auth0-spa";
 
 const PrivateRoute = ({ component: Component, path, ...rest }) => {
-  const { loading, isAuthenticated, loginWithRedirect, getTokenSilently } = useAuth0();
+  const { loading, isAuthenticated, loginWithRedirect, getTokenWithPopup } = useAuth0();
 
   useEffect(() => {
     if (loading || isAuthenticated) {
       return;
     }
     const fn = async () => {
-      await getTokenSilently();
+      await getTokenWithPopup({
+        appState: { targetUrl: path }
+      });
     };
     fn();
-  }, [loading, isAuthenticated, loginWithRedirect, getTokenSilently, path]);
+  }, [loading, isAuthenticated, loginWithRedirect, path]);
 
   const render = props =>
     isAuthenticated === true ? <Component {...props} /> : null;
