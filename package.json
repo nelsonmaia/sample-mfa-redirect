@@ -1,6 +1,9 @@
 {
   "name": "auth0-react-01-login",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.4.0"
+  },
   "private": true,
   "scripts": {
     "start": "node server.js",
