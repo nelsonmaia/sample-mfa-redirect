@@ -11,9 +11,7 @@ const PrivateRoute = ({ component: Component, path, ...rest }) => {
       return;
     }
     const fn = async () => {
-      await loginWithRedirect({
-        appState: { targetUrl: path }
-      });
+      await getTokenSilently();
     };
     fn();
   }, [loading, isAuthenticated, loginWithRedirect, path]);
